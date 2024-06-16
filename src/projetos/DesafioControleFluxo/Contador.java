@@ -1,4 +1,4 @@
-/**
+package projetos.DesafioControleFluxo; /**
  * @author Pedro Lôbo Nascimento
  */
 import java.util.Scanner;
