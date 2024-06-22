@@ -21,7 +21,7 @@ public class CarrinhoDeCompras {
         List<Item> itensParaRemover = new ArrayList<>();
 
         for (Item item : itens) {
-            if (item.getNome().equals(nome)) {
+            if (item.getNome().equalsIgnoreCase(nome)) {
                 itensParaRemover.add(item);
             }
         }
