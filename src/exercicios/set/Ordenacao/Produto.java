@@ -20,8 +20,8 @@ public class Produto implements Comparable<Produto> {
     }
 
     @Override
-    public int compareTo(Produto o) {
-        return nome.compareToIgnoreCase(o.getNome());
+    public int compareTo(Produto p) {
+        return nome.compareToIgnoreCase(p.getNome());
     }
 
     @Override
