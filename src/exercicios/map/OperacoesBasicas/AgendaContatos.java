@@ -18,9 +18,7 @@ public class AgendaContatos {
     }
 
     public void removerContato(String nome) {
-        if (!agendaContatoMap.isEmpty()) {
-            agendaContatoMap.remove(nome);
-        }
+        agendaContatoMap.remove(nome);
     }
 
     public void exibirContatos() {
