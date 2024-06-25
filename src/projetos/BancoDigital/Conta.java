@@ -1,4 +1,5 @@
 package projetos.BancoDigital;
+
 public abstract class Conta implements IConta {
 	
 	private static final int AGENCIA_PADRAO = 1;
@@ -26,9 +27,13 @@ public abstract class Conta implements IConta {
 	}
 
 	@Override
-	public void transferir(double valor, IConta contaDestino) {
+	public void transferir(double valor, IConta contaDestino, String tipoTransferencia) {
 		this.sacar(valor);
-		contaDestino.depositar(valor);
+		if (tipoTransferencia.equalsIgnoreCase("TED") && cliente.getTipoPessoa().equalsIgnoreCase("juridica")) {
+			contaDestino.depositar(valor - (valor * 0.01)); //TED desconta 1% do valor da transferencia de PJ
+		} else {
+			contaDestino.depositar(valor); //Pix manda valor inteiro
+		}
 	}
 
 	public int getAgencia() {
