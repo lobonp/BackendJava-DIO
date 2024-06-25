@@ -15,4 +15,13 @@ public class Cliente {
 	public String getTipoPessoa() {
 		return tipoPessoa;
 	}
+
+	@Override
+	public String toString() {
+		if (this.tipoPessoa == "fisica") {
+			return this.nome + " - Pessoa Física";
+		} else {
+			return this.nome + " - Pessoa Jurídica";
+		}
+	}
 }
