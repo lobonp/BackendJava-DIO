@@ -13,13 +13,17 @@ public class Main {
 		Conta pedro_poupanca = new ContaPoupanca(pedro);
 
 		pedro_cc.imprimirExtrato();
+		System.out.println();
 		pedro_poupanca.imprimirExtrato();
+		System.out.println();
 
 		Conta kabum_cc = new ContaCorrente(kabum);
 		kabum_cc.imprimirExtrato();
+		System.out.println();
 
 		Conta microsoft_cc = new ContaCorrente(microsoft);
 		microsoft_cc.imprimirExtrato();
+		System.out.println();
 
 		pedro_cc.depositar(1000);
 		kabum_cc.depositar(100);
@@ -36,8 +40,13 @@ public class Main {
 
 		//simulando compra com cartao de credito em loja
 		pedro_cc.transferir(500, kabum_cc, "credito");
+		pedro_cc.pagarFatura(250);
+		System.out.println();
+		pedro_cc.pagarFatura(250);
+		System.out.println();
 
-		System.out.println(pedro.getScore());
+		pedro_cc.imprimirExtrato();
+		System.out.println();
 	}
 
 }
