@@ -42,6 +42,14 @@ public abstract class Conta implements IConta {
 		this.cliente.atualizaScore(this.cliente.getScore() + 1);
 	}
 
+	public void pagarFatura(double pagamento) {
+		if (this.cliente.isCartaoCredito()) {
+			this.cliente.pagarFatura(pagamento);
+		} else {
+			System.out.println("Cliente não possui cartão de crédito.");
+		}
+	}
+
 	public int getAgencia() {
 		return agencia;
 	}
