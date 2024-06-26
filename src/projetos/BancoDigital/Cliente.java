@@ -58,9 +58,20 @@ public class Cliente {
 		this.faturaCartaoCredito = faturaCartaoCredito;
 	}
 
+	public double getLimiteCredito() {
+		return this.limiteCredito;
+	}
+
+	public void setLimiteCredito(double limiteCredito) {
+		this.limiteCredito = limiteCredito;
+	}
+
 	public void atualizaScore(int score) {
 		setScore(score);
-		if (this.score >= 5 && !this.cartaoCredito) setCartaoCredito(true);
+		if (this.score % 5 == 0 && !this.cartaoCredito) {
+			setCartaoCredito(true);
+			setLimiteCredito(this.getLimiteCredito() + 1000);
+		}
 	}
 
 	public boolean aprovaCompra(double valor) {
@@ -69,10 +80,20 @@ public class Cliente {
 			return false;
 		} else {
 			this.setFaturaCartaoCredito(this.faturaCartaoCredito + valor);
-			this.milhas++;
+			this.setMilhas(this.getMilhas() + 1);
 			return true;
 		}
- 	}
+	}
+
+	public void pagarFatura(double pagamento){
+		this.setFaturaCartaoCredito(this.getFaturaCartaoCredito() - pagamento);
+		if (this.getFaturaCartaoCredito() > 0) {
+			System.out.printf("%s, R$ %.2f da sua fatura foram pagos, restam:%n", this.getNome(), pagamento);
+			System.out.printf("R$ %.2f%n", this.getFaturaCartaoCredito());
+		} else {
+			System.out.println("Fatura paga. Nao há mais débitos.");
+		}
+	}
 
 	@Override
 	public String toString() {
