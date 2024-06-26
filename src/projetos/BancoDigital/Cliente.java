@@ -7,26 +7,23 @@ public class Cliente {
 	private boolean cartaoCredito; //possui cartão de credito (necessario score >= 5)
 	private int milhas; //milhas do cliente acumuladas por usar cartão de credito
 	private double faturaCartaoCredito; //fatura do cartão de crédito
+	private double limiteCredito;
+
+	public Cliente(String nome, String tipoPessoa) {
+		this.nome = nome;
+		this.tipoPessoa = tipoPessoa;
+		this.score = 0;
+		this.cartaoCredito = false;
+		this.milhas = 0;
+		this.faturaCartaoCredito = 0;
+	}
 
 	public String getNome() {
 		return nome;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
 	public String getTipoPessoa() {
 		return tipoPessoa;
-	}
-
-	@Override
-	public String toString() {
-		if (this.tipoPessoa == "fisica") {
-			return this.nome + " - Pessoa Física";
-		} else {
-			return this.nome + " - Pessoa Jurídica";
-		}
 	}
 
 	public boolean isCartaoCredito() {
@@ -59,5 +56,30 @@ public class Cliente {
 
 	public void setFaturaCartaoCredito(double faturaCartaoCredito) {
 		this.faturaCartaoCredito = faturaCartaoCredito;
+	}
+
+	public void atualizaScore(int score) {
+		setScore(score);
+		if (this.score >= 5 && !this.cartaoCredito) setCartaoCredito(true);
+	}
+
+	public boolean aprovaCompra(double valor) {
+		if (this.faturaCartaoCredito + valor > this.limiteCredito) {
+			System.out.println("Compra recusada. Não há limite disponível");
+			return false;
+		} else {
+			this.setFaturaCartaoCredito(this.faturaCartaoCredito + valor);
+			this.milhas++;
+			return true;
+		}
+ 	}
+
+	@Override
+	public String toString() {
+		if (this.tipoPessoa.equalsIgnoreCase("fisica")) {
+			return this.nome + " - Pessoa Física";
+		} else {
+			return this.nome + " - Pessoa Jurídica";
+		}
 	}
 }
