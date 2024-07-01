@@ -1,8 +1,11 @@
 package projetos.projeto_poo.dominio;
 
+import java.util.Set;
+
 public abstract class Conteudo {
 
     protected static final double XP_PADRAO = 10d;
+    protected Set<String> linguagens;
 
     private String titulo;
     private String descricao;
@@ -23,5 +26,13 @@ public abstract class Conteudo {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public String getLinguagens() {
+        return this.linguagens.toString();
+    }
+
+    public void adicionarLinguagem(String linguagem) {
+        this.linguagens.add(linguagem);
     }
 }

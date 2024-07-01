@@ -1,5 +1,8 @@
 package projetos.projeto_poo.dominio;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Curso extends Conteudo{
 
     private int cargaHoraria;
@@ -10,6 +13,7 @@ public class Curso extends Conteudo{
     }
 
     public Curso() {
+        this.linguagens = new HashSet<>();
     }
 
 
@@ -26,7 +30,8 @@ public class Curso extends Conteudo{
         return "Curso{" +
                 "titulo='" + getTitulo() + '\'' +
                 ", descricao='" + getDescricao() + '\'' +
-                ", cargaHoraria=" + cargaHoraria +
+                ", linguagens='" + getLinguagens() + '\'' +
+                ", cargaHoraria =" + cargaHoraria +
                 '}';
     }
 }

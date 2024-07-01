@@ -1,6 +1,7 @@
 package projetos.projeto_poo.dominio;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 
 public class Mentoria extends Conteudo{
 
@@ -12,6 +13,7 @@ public class Mentoria extends Conteudo{
     }
 
     public Mentoria() {
+        this.linguagens = new HashSet<>();
     }
 
     public LocalDate getData() {
