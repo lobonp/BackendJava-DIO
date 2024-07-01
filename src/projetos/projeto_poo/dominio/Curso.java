@@ -1,4 +1,4 @@
-package projetos.projeto_poo;
+package projetos.projeto_poo.dominio;
 
 public class Curso extends Conteudo{
 
